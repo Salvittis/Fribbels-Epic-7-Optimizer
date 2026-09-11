@@ -1,0 +1,241 @@
+# Meta builds library. Each entry tells the scorer what a hero wants.
+#
+# Schema per build:
+#   name:               canonical hero name as it appears in Fribbels (Eng).
+#   role_label:         free text — your reminder of what they do.
+#   sets_priority:      list of preferred sets, best first. Use Fribbels keys
+#                       (SpeedSet, ImmunitySet, RageSet, HitSet, LifestealSet,
+#                        ResistSet, ProtectionSet, CounterSet, DestructionSet,
+#                        ReverseSet, ResistSet, RevengeSet, InjurySet, ...)
+#   main_necklace:      list of acceptable main stats (canonical keys). Empty = any
+#   main_ring:          same.
+#   main_boots:         same. (Speed almost always; sometimes Atk%/HP%.)
+#   substats_priority:  ordered list. Earlier = more weight.
+#                       canonical keys: speed, attack_pct, crit_chance, crit_damage,
+#                       health_pct, defense_pct, effectiveness, effect_resist,
+#                       attack, health, defense
+#   main_stat_strict:   true to harshly punish wrong main on N/R/B.
+#   tier:               1..5 (1 = priority build, 5 = niche).
+#
+# Add as many heroes as you want. Use lowercased keys for stable sorting.
+
+builds:
+
+  # ============================================================ DPS / Cleavers
+  arbiter_vildred:
+    name: Arbiter Vildred
+    role_label: AOE cleaver, S3 reset on kill
+    sets_priority: [SpeedSet, RageSet, DestructionSet, HitSet]
+    main_necklace: [crit_damage, attack_pct]
+    main_ring: [attack_pct, crit_chance]
+    main_boots: [speed]
+    substats_priority: [crit_chance, crit_damage, attack_pct, speed, attack]
+    tier: 2
+
+  ssb:
+    name: Seaside Bellona
+    role_label: Single-target nuker / cleave
+    sets_priority: [SpeedSet, RageSet, DestructionSet, HitSet]
+    main_necklace: [crit_damage]
+    main_ring: [attack_pct]
+    main_boots: [speed]
+    substats_priority: [crit_chance, crit_damage, attack_pct, speed]
+    tier: 1
+
+  baal_and_sezan:
+    name: Baal & Sezan
+    role_label: Backline burst, S3 nuke
+    sets_priority: [RageSet, DestructionSet, SpeedSet, HitSet]
+    main_necklace: [crit_damage]
+    main_ring: [attack_pct, crit_chance]
+    main_boots: [speed]
+    substats_priority: [crit_chance, crit_damage, attack_pct, speed, attack]
+    tier: 2
+
+  briar_witch_iseria:
+    name: Briar Witch Iseria
+    role_label: AOE attack-bar push, evasion
+    sets_priority: [SpeedSet, HitSet, RageSet, DestructionSet]
+    main_necklace: [crit_damage, attack_pct]
+    main_ring: [attack_pct]
+    main_boots: [speed]
+    substats_priority: [speed, crit_chance, crit_damage, attack_pct, effectiveness]
+    tier: 1
+
+  # ============================================================ Bruisers / Counter
+  arbiter_vildred_bruiser:
+    name: Lilibet
+    role_label: Counter knight w/ provoke
+    sets_priority: [CounterSet, ImmunitySet, SpeedSet, ResistSet]
+    main_necklace: [defense_pct, health_pct]
+    main_ring: [defense_pct, health_pct]
+    main_boots: [speed, health_pct]
+    substats_priority: [speed, defense_pct, health_pct, effect_resist, attack_pct]
+    tier: 2
+
+  blood_blade_karin:
+    name: Blood Blade Karin
+    role_label: Bruiser with revive
+    sets_priority: [LifestealSet, SpeedSet, RageSet, HitSet]
+    main_necklace: [crit_damage, attack_pct]
+    main_ring: [attack_pct]
+    main_boots: [speed]
+    substats_priority: [crit_chance, crit_damage, attack_pct, speed, health_pct]
+    tier: 3
+
+  lots:
+    name: Last Rider Krau
+    role_label: Counter tank
+    sets_priority: [CounterSet, ImmunitySet, SpeedSet, ResistSet]
+    main_necklace: [defense_pct, health_pct]
+    main_ring: [defense_pct, health_pct]
+    main_boots: [health_pct, speed]
+    substats_priority: [defense_pct, health_pct, speed, effect_resist]
+    tier: 2
+
+  # ============================================================ Speed / Stripper / Debuffer
+  ml_ken:
+    name: Martial Artist Ken
+    role_label: Single-target stripper / DPS
+    sets_priority: [SpeedSet, RageSet, HitSet, ResistSet]
+    main_necklace: [crit_damage, attack_pct]
+    main_ring: [attack_pct]
+    main_boots: [speed]
+    substats_priority: [speed, crit_chance, crit_damage, attack_pct, effectiveness]
+    tier: 1
+
+  politis:
+    name: Politis
+    role_label: Strip + debuff
+    sets_priority: [SpeedSet, HitSet, ResistSet, ImmunitySet]
+    main_necklace: [attack_pct, health_pct]
+    main_ring: [effectiveness, attack_pct]
+    main_boots: [speed]
+    substats_priority: [speed, effectiveness, attack_pct, crit_chance]
+    tier: 2
+
+  ssa:
+    name: Specter Tenebria
+    role_label: AOE debuff DPS
+    sets_priority: [SpeedSet, RageSet, HitSet, DestructionSet]
+    main_necklace: [crit_damage, attack_pct]
+    main_ring: [attack_pct]
+    main_boots: [speed]
+    substats_priority: [speed, effectiveness, crit_chance, crit_damage, attack_pct]
+    tier: 1
+
+  # ============================================================ Supports / Healers
+  ruele:
+    name: Ruele of Light
+    role_label: Revive healer
+    sets_priority: [SpeedSet, ImmunitySet, ResistSet, HitSet]
+    main_necklace: [health_pct]
+    main_ring: [effectiveness, health_pct]
+    main_boots: [speed]
+    substats_priority: [speed, health_pct, effectiveness, defense_pct, effect_resist]
+    tier: 1
+
+  angelica:
+    name: Angelica
+    role_label: Tank / healer
+    sets_priority: [SpeedSet, ImmunitySet, ResistSet]
+    main_necklace: [health_pct]
+    main_ring: [health_pct]
+    main_boots: [speed, health_pct]
+    substats_priority: [speed, health_pct, defense_pct, effect_resist]
+    tier: 3
+
+  diene:
+    name: Diene
+    role_label: Cleanse / def buffer
+    sets_priority: [SpeedSet, ImmunitySet, ResistSet]
+    main_necklace: [health_pct]
+    main_ring: [health_pct, effectiveness]
+    main_boots: [speed]
+    substats_priority: [speed, health_pct, defense_pct, effect_resist]
+    tier: 1
+
+  ml_charlotte_support:
+    name: Adventurer Ras
+    role_label: Tanky support
+    sets_priority: [SpeedSet, ImmunitySet, ResistSet]
+    main_necklace: [health_pct, defense_pct]
+    main_ring: [health_pct, defense_pct]
+    main_boots: [speed, health_pct]
+    substats_priority: [speed, health_pct, defense_pct, effect_resist]
+    tier: 3
+
+  # ============================================================ Hunt specialists
+  luna:
+    name: Luna
+    role_label: Wyvern DPS
+    sets_priority: [RageSet, HitSet, DestructionSet, SpeedSet]
+    main_necklace: [crit_damage]
+    main_ring: [attack_pct]
+    main_boots: [attack_pct, speed]
+    substats_priority: [crit_chance, crit_damage, attack_pct, speed, attack]
+    tier: 1
+
+  vildred:
+    name: Vildred
+    role_label: Banshee/Wyvern AOE
+    sets_priority: [SpeedSet, RageSet, HitSet, DestructionSet]
+    main_necklace: [crit_damage]
+    main_ring: [attack_pct]
+    main_boots: [speed, attack_pct]
+    substats_priority: [crit_chance, crit_damage, attack_pct, speed, attack]
+    tier: 2
+
+  bellona:
+    name: Bellona
+    role_label: Banshee/Wyvern DPS
+    sets_priority: [SpeedSet, HitSet, RageSet]
+    main_necklace: [crit_damage, attack_pct]
+    main_ring: [attack_pct]
+    main_boots: [speed]
+    substats_priority: [crit_chance, crit_damage, attack_pct, speed]
+    tier: 2
+
+  # ============================================================ Arena PvP
+  arbiter_vildred_pvp:
+    name: ML Ken
+    role_label: PvP cleaver
+    sets_priority: [SpeedSet, RageSet, DestructionSet, HitSet]
+    main_necklace: [crit_damage]
+    main_ring: [attack_pct]
+    main_boots: [speed]
+    substats_priority: [speed, crit_chance, crit_damage, attack_pct]
+    tier: 1
+
+  cdom:
+    name: Carrot
+    role_label: PvP DPS
+    sets_priority: [SpeedSet, RageSet, HitSet]
+    main_necklace: [crit_damage]
+    main_ring: [attack_pct]
+    main_boots: [speed]
+    substats_priority: [speed, crit_chance, crit_damage, attack_pct]
+    tier: 3
+
+  # ============================================================ Generic role templates
+  # If a hero you own isn't listed above, you can fall back to these by adding
+  # them as nicknames in your own meta yaml.
+  generic_dps:
+    name: __generic_dps
+    role_label: Any DPS placeholder
+    sets_priority: [SpeedSet, RageSet, HitSet, DestructionSet]
+    main_necklace: [crit_damage, attack_pct]
+    main_ring: [attack_pct]
+    main_boots: [speed]
+    substats_priority: [crit_chance, crit_damage, attack_pct, speed, attack]
+    tier: 4
+
+  generic_tank:
+    name: __generic_tank
+    role_label: Any tank/support placeholder
+    sets_priority: [ImmunitySet, SpeedSet, ResistSet, HitSet]
+    main_necklace: [health_pct, defense_pct]
+    main_ring: [health_pct, defense_pct]
+    main_boots: [speed, health_pct]
+    substats_priority: [speed, health_pct, defense_pct, effect_resist, effectiveness]
+    tier: 4

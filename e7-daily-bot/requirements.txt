@@ -1,0 +1,12 @@
+opencv-python>=4.9
+numpy>=1.26
+Pillow>=10.0
+PyYAML>=6.0
+# OCR for hunt drop filtering (optional — only required if you enable hunt)
+pytesseract>=0.3.10
+# Mouse driver (PC Client) — required if you don't use ADB
+pygetwindow>=0.0.9
+pyautogui>=0.9.54
+# Webapp GUI
+streamlit>=1.30
+pandas>=2.0
