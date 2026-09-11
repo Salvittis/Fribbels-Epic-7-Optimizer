@@ -57,3 +57,9 @@ npm-debug.log.*
 # .vscode
 .vscode
 .idea
+
+# handoff 11/09/2026: worktrees do agente e bytecode python nao entram no repo
+.claude/worktrees/
+__pycache__/
+*.pyc
+
